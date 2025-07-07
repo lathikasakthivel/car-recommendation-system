@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Recommendations</title>
+</head>
+<body>
+    <h1>Recommended Cars</h1>
+    
+    {% if cars %}
+        <ul>
+            {% for car in cars %}
+            <li>
+                <h3>{{ car['Car Name'] }} ({{ car['Year'] }})</h3>
+                <p>Price: {{ car['Price'] }}</p>
+                <p>Fuel Type: {{ car['Fuel'] }}</p>
+                <p>Transmission: {{ car['Transmission'] }}</p>
+                <p>Assembly: {{ car['Assembly'] }}</p>
+                <p>Location: {{ car['Seller Location'] }}</p>
+                <img src="{{ car['Image'] }}" alt="Car Image" width="200">
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+    
+    <a href="{{ url_for('home') }}">Back to Search</a>
+</body>
+</html>
